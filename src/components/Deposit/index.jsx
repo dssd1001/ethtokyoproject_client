@@ -12,6 +12,10 @@ import { Button } from "@/components/Button";
 import { Onramp } from "@/components/Onramp";
 import { DollarIcon } from "@/components/icons/DollarIcon";
 import { useWeb3Auth } from "@/services/web3auth";
+import Web3 from 'web3'
+import { Web3Adapter } from '@safe-global/protocol-kit'
+import SafeApiKit from '@safe-global/api-kit'
+import { SafeFactory } from '@safe-global/protocol-kit'
 
 function DepositIcon(props) {
   return (
@@ -121,7 +125,7 @@ function DepositDetails({ amount }) {
 }
 
 function DepositDialog({ open, setOpen, className, fundID }) {
-  const { provider, login } = useWeb3Auth();
+  const { provider, login, getAddress } = useWeb3Auth();
   let formRef = useRef();
   let panelRef = useRef();
   let inputRef = useRef();
@@ -131,6 +135,50 @@ function DepositDialog({ open, setOpen, className, fundID }) {
   useEffect(() => {
     setFundName('FLAGSHIP');
   }, [fundID]);
+
+  const safeDeposit = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      return;
+    }
+
+    // This is Gnosis Safe deposit implementation for polygon, not mumbai
+    // TODO: deploy custom Safe contracts to Mumbai and need contractNetworks property
+
+    // Instantiate an EthAdapter
+    const providerWeb3 = new Web3.providers.HttpProvider('https://polygon-rpc.com');
+    const web3 = new Web3(providerWeb3);
+    const address = await getAddress();
+    const ethAdapter = new Web3Adapter({
+      web3,
+      signerAddress: address
+    });
+
+    // Initialize the Safe API Kit
+    const txServiceUrl = 'https://safe-transaction-polygon.safe.global';
+    const safeService = new SafeApiKit({ txServiceUrl, ethAdapter });
+
+    // Initialize the Protocol Kit
+    const safeFactory = await SafeFactory.create({ ethAdapter });
+
+    // Deploy a Safe
+    // TODO: multiSig with platform's master wallet which will run robo-algorithm transactions on behalf of user funds
+    const safeAccountConfig = {
+      owners: [
+        address
+      ],
+      threshold: 1,
+    }
+    // const safeSdk = await safeFactory.deploySafe({ safeAccountConfig });
+
+    // TODO: Send USDC to Safe
+    // const safeAddress = safeSdk.getAddress();
+    // const transactionParameters = {
+    //   to: safeAddress,
+    //   value: amount
+    // }
+    // const tx = await provider.signAndSendTransaction(transactionParameters)
+  };
 
   return (
     <Transition.Root
@@ -182,7 +230,7 @@ function DepositDialog({ open, setOpen, className, fundID }) {
                     <DepositDetails />
                     <br/>
                     <Button
-                      onClick={provider ? ()=>{} : login}
+                      onClick={provider ? safeDeposit : login}
                       variant="primary"
                     >
                       Deposit
