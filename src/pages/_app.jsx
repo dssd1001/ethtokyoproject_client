@@ -28,11 +28,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        {router.pathname === "/" ? (
-          <title>Bitcoin Robo-Advisor</title>
-        ) : (
-          <title>{`${pageProps.title}`}</title>
-        )}
+        <title>Bitcoin Robo-Advisor</title>
         <meta name="description" content={pageProps.description} />
       </Head>
       {/* <MDXProvider components={mdxComponents}> */}
