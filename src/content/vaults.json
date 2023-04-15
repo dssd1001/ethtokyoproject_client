@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Protect",
+    "attributes": [
+      {
+        "trait_type": "Risk",
+        "trait_value": 2
+      },
+      {
+        "trait_type": "Frequency",
+        "trait_value": 2
+      }
+    ],
+    "accuracy": 86.7
+  },
+  {
+    "name": "Compound",
+    "attributes": [
+      {
+        "trait_type": "Risk",
+        "trait_value": 5
+      },
+      {
+        "trait_type": "Frequency",
+        "trait_value": 5
+      }
+    ],
+    "accuracy": 80.2
+  }
+]
