@@ -196,12 +196,12 @@ export const PortfolioValueChart = ({}) => {
           </Tag>
         </div>
         <div className="flex mr-2">
-          <Tag color="zinc">
+          <Tag color="indigo">
             <span className="text-base">1M</span>
           </Tag>
         </div>
         <div className="flex">
-          <Tag color="indigo">
+          <Tag color="zinc">
             <span className="text-base">1Y</span>
           </Tag>
         </div>

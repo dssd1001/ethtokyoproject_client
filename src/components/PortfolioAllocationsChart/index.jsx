@@ -93,12 +93,12 @@ export const PortfolioAllocationsChart = ({
         <ReactECharts option={option} />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="rounded-circle flex flex-col items-center justify-center marketing-exp-circle">
-            <h1 className="text-xl font-bold">$310.0k</h1>
+            <h1 className="text-xl font-bold">$22.5k</h1>
             {/* <span className="text-xs">USDT</span> */}
             {/* <span className="text-xs">+4.11%</span> */}
 
             <Tag color="emerald">
-              <span className="text-2xs">+2086%</span>
+              <span className="text-2xs">+50%</span>
             </Tag>
           </div>
         </div>

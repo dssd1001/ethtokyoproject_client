@@ -121,6 +121,7 @@ function DepositDetails({ amount }) {
 }
 
 function DepositDialog({ open, setOpen, className, fundID }) {
+  const { provider, login } = useWeb3Auth();
   let formRef = useRef();
   let panelRef = useRef();
   let inputRef = useRef();
@@ -181,7 +182,7 @@ function DepositDialog({ open, setOpen, className, fundID }) {
                     <DepositDetails />
                     <br/>
                     <Button
-                      onClick={()=>{}}
+                      onClick={provider ? ()=>{} : login}
                       variant="primary"
                     >
                       Deposit
