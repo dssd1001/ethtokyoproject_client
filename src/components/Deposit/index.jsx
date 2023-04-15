@@ -76,7 +76,7 @@ function DepositDetails({ amount }) {
     if (balance < amount || balance == 0) {
       setSufficientFunds(false);
     }
-  }, [balance]);
+  }, [balance, amount]);
 
   useEffect(() => {
     setTotal(amount + estimatedGasFee);
@@ -128,7 +128,7 @@ function DepositDialog({ open, setOpen, className, fundID }) {
   let [fundName, setFundName] = useState('');
 
   useEffect(() => {
-    setFundName('FUND_NAME');
+    setFundName('FLAGSHIP');
   }, [fundID]);
 
   return (

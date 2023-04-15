@@ -1,8 +1,9 @@
 export const userVaultAllocations = [
   {
-    value: 412600,
-    name: "Flagship Fund",
-    itemStyle: { color: "#10b981" },
+    value: 9080.4,
+    change: 2086,
+    name: "Total Performance",
+    itemStyle: { color: "#818cf8" },
     label: {
       rich: {
         per: {
@@ -12,10 +13,11 @@ export const userVaultAllocations = [
     },
   },
   {
-    value: 641500,
-    name: "Protect Fund",
+    value: 4492.5,
+    change: 89,
+    name: "Total Win Rate",
     itemStyle: {
-      color: "#818cf8",
+      color: "#4f46e5",
     },
     label: {
       rich: {

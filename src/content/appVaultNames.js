@@ -1,3 +1,4 @@
+import { SparklesIcon } from "@heroicons/react/24/outline";
 import { ShieldCheckIcon } from "@heroicons/react/24/outline";
 import { CircleStackIcon } from "@heroicons/react/24/outline";
 
@@ -5,8 +6,9 @@ export const appVaultNames = [
   {
     href: "/fund/flagship",
     name: "Flagship",
-    description: "Earn through slow and steady gains by trading tiny, predictable movements in price action.",
-    icon: CircleStackIcon,
+    description:
+      "Earn by reducing your exposure to volatile market conditions and strong bearish sentiments.",
+    icon: SparklesIcon,
     pattern: {
       y: 16,
       squares: [
@@ -16,9 +18,10 @@ export const appVaultNames = [
     },
   },
   {
-    href: "/fund/compound",
+    href: "/fund/protect",
     name: "Protect",
-    description: "Earn by reducing your exposure to volatile market conditions and strong bearish sentiments.",
+    description:
+      "Earn by reducing your exposure to volatile market conditions and strong bearish sentiments.",
     icon: ShieldCheckIcon,
     pattern: {
       y: -6,

@@ -10,6 +10,11 @@ const colorStyles = {
     medium:
       "ring-indigo-300 dark:ring-indigo-400/30 bg-indigo-400/10 text-indigo-500 dark:text-indigo-400",
   },
+  emerald: {
+    small: "text-emerald-500 dark:text-emerald-400",
+    medium:
+      "ring-emerald-300 dark:ring-emerald-400/30 bg-emerald-400/10 text-emerald-500 dark:text-emerald-400",
+  },
   sky: {
     small: "text-sky-500",
     medium:
