@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
   let router = useRouter();
 
   const [web3AuthNetwork, setWeb3AuthNetwork] = useState(process.env.NEXT_PUBLIC_WEB3AUTH_NETWORK);
-  const [chain, setChain] = useState("polygon");
+  const [chain, setChain] = useState(process.env.NEXT_PUBLIC_NETWORK_NAME);
 
   return (
     <>

@@ -48,7 +48,7 @@ const ethProvider = (provider) => {
       const result = await contract.methods.balanceOf(address).call();
       const balance = parseInt(result) / 10**6;
 
-      return balance.toFixed(0); // No decimals
+      return balance.toFixed(1); // No decimals
     } catch (error) {
       return error;
     }

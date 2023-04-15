@@ -19,4 +19,13 @@ export const CHAIN_CONFIG = {
     ticker: "matic",
     tickerName: "Matic",
   },
+  mumbai: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    rpcTarget: "https://rpc-mumbai.maticvigil.com/",
+    blockExplorer: "https://polygonscan.com/",
+    chainId: "0x13881",
+    displayName: "Mumbai Testnet",
+    ticker: "matic",
+    tickerName: "Matic",
+  },
 };
