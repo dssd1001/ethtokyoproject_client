@@ -33,7 +33,7 @@ const ethProvider = (provider) => {
       const web3 = new Web3(provider);
       const accounts = await web3.eth.getAccounts();
       const address = accounts[0];
-      const usdAddress = process.env.NEXT_PUBLIC_ADDRESS_USDT_MATIC;
+      const usdAddress = process.env.NEXT_PUBLIC_ADDRESS_USDC_MATIC;
       const minABI = [
         {
           constant: true,

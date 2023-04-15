@@ -16,9 +16,46 @@ import { Tag } from "@/components/Tag";
 import { useWeb3Auth } from "@/services/web3auth";
 import Transak from "@biconomy/transak";
 
+import { SafeOnRampKit, SafeOnRampProviderType, StripeAdapter } from '@safe-global/onramp-kit';
+
 function OnrampOptions({ setStep }) {
   const { provider, login, isLoading, getAddress } = useWeb3Auth();
 
+  // Safe Onramp Kit Test
+  const safeOnramp = async () => {
+    const safeOnRamp = await SafeOnRampKit.init(
+      new StripeAdapter({
+        stripePublicKey:
+          'pk_test_51MZbmZKSn9ArdBimSyl5i8DqfcnlhyhJHD8bF2wKrGkpvNWyPvBAYtE211oHda0X3Ea1n4e9J9nh2JkpC7Sxm5a200Ug9ijfoO',
+        onRampBackendUrl: 'https://aa-stripe.safe.global',
+      })
+    );
+
+    const sessionData = await safeOnRamp.open({
+      element: '#stripe-root',
+      theme: 'light',
+      // Optional, if you want to specify default options
+      // ---
+      defaultOptions: {
+        transaction_details: {
+          wallet_address: await getAddress(),
+          lock_wallet_address: true,
+          supported_destination_networks: ['polygon'],
+          supported_destination_currencies: ['usdc'],
+        },
+      }
+    });
+
+    safeOnRamp.subscribe('onramp_ui_loaded', () => {
+      console.log('UI loaded')
+    })
+
+    safeOnRamp.subscribe('onramp_session_updated', (e) => {
+      console.log('Session Updated', e.payload)
+    })
+  };
+
+  // Transak onramp
   const fiatOnramp = async () => {
     if (!provider) {
       console.log("provider not initialized yet");
@@ -28,11 +65,11 @@ function OnrampOptions({ setStep }) {
     const transak = new Transak('PRODUCTION', {
       disableWalletAddressForm: true,
       walletAddress: address,
-      cryptoCurrencyCode: 'USDT',
+      cryptoCurrencyCode: 'USDC',
       network: 'polygon',
       themeColor: '000000',
       hideMenu: true,
-      exchangeScreenTitle: 'Fund your account with USDT',
+      exchangeScreenTitle: 'Fund your account with USDC',
     });
     transak.init();
   };
@@ -43,7 +80,7 @@ function OnrampOptions({ setStep }) {
 
   return (
     <div className="items-center text-center p-5">
-      <h3 className="text-md font-semibold text-zinc-900 dark:text-white">Add Funds (USDT)</h3>
+      <h3 className="text-md mb-5 font-semibold text-zinc-900 dark:text-white">Add Funds (USDC)</h3>
       <div>
         <Button
           onClick={provider ? fiatOnramp : login}
@@ -62,7 +99,20 @@ function OnrampOptions({ setStep }) {
           Mobile Pay
         </Tag>
       </div>
-      <h5 className="text-sm font-semibold text-zinc-600 dark:text-zinc-400">or</h5>
+      <h5 className="text-sm my-5 font-semibold text-zinc-600 dark:text-zinc-400">or</h5>
+      <div id="stripe-root">
+        <Button
+          onClick={provider ? safeOnramp : login}
+          variant="outline"
+        >
+          {provider ? 'Buy' : 'Log In'}
+        </Button>
+        <br/>
+        <Tag color="sky">
+          Stripe
+        </Tag>
+      </div>
+      <h5 className="text-sm my-5 font-semibold text-zinc-600 dark:text-zinc-400">or</h5>
       <div>
         <Button
           onClick={selectTransfer}
@@ -95,7 +145,7 @@ function TransferOption({ setStep }) {
 
   return (
     <div className="items-center text-center p-5">
-      <h3 className="text-md font-semibold text-zinc-900 dark:text-white">Receive USDT</h3>
+      <h3 className="text-md font-semibold text-zinc-900 dark:text-white">Receive USDC</h3>
       <div>
         {/* <Button
           onClick={()=>{}}
@@ -105,7 +155,7 @@ function TransferOption({ setStep }) {
         </Button> */}
         <br/>
         <Tag color="rose">
-          Only send USDT (polygon) to this address:
+          Only send USDC (Polygon) to this address:
         </Tag>
         <Pre>
           <Code language={'js'}>
@@ -255,7 +305,7 @@ export function Onramp({ showBalance=false }) {
           {...buttonProps}
         >
           { showBalance ? (
-            'Account Balance: ' + balance + ' USDT'
+            'Account Balance: ' + balance + ' USDC'
           ) : 'Add Funds' }
         </button>
         <OnrampDialog {...dialogProps} />

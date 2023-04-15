@@ -87,7 +87,7 @@ function DepositDetails({ amount }) {
 
       {balance && (
         <p className="text-md font-semibold text-zinc-600 dark:text-zinc-400">
-          Your USDT balance
+          Your USDC balance
           <span className={ balance == 0 ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400" }> ${ balance }</span>
         </p>
       )}
@@ -96,7 +96,7 @@ function DepositDetails({ amount }) {
         <div className="flex">
           <p className="text-md font-semibold text-zinc-600 dark:text-zinc-400">
             Add more
-            <span className="text-indigo-600 dark:text-indigo-400"> USDT </span>
+            <span className="text-indigo-600 dark:text-indigo-400"> USDC </span>
             to continue:
           </p>
           <Onramp showBalance={false} />
