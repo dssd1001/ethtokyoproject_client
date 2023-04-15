@@ -11,6 +11,7 @@ import {
 } from "@/components/MobileNavigation";
 import { useMobileNavigationStore } from "@/components/MobileNavigation";
 import { ModeToggle } from "@/components/ModeToggle";
+import { Onramp } from "@/components/Onramp";
 import { LoginButton } from "@/components/LoginButton";
 
 function TopLevelNavItem({ href, children }) {
@@ -77,6 +78,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
         <div className="flex gap-4">
           {/* <MobileSearch /> */}
           <ModeToggle />
+          <Onramp showBalance={true} />
         </div>
         <div className="hidden min-[416px]:contents">
           {/* <Button href="#">Connect Wallet</Button> */}

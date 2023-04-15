@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@biconomy/transak": "^2.0.0",
     "@headlessui/react": "^1.7.12",
     "@heroicons/react": "^2.0.16",
     "@tailwindcss/typography": "^0.5.9",
