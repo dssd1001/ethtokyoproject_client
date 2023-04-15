@@ -7,9 +7,9 @@ export function RecordsTransferHistory({ userTransferRecords }) {
       <Heading level={2} id="resources">
         Transfer History
       </Heading>
-      <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+      {/* <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
         A list of your PnLs from your funds.
-      </p>
+      </p> */}
       <div className="not-prose gap-8 sm:grid-cols-2 xl:grid-cols-1">
         <TransferHistory userTransferRecords={userTransferRecords} />
       </div>

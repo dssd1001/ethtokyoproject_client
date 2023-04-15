@@ -1,7 +1,7 @@
 export const userVaultAllocations = [
   {
     value: 412600,
-    name: "Vault A",
+    name: "Flagship Fund",
     itemStyle: { color: "#10b981" },
     label: {
       rich: {
@@ -13,7 +13,7 @@ export const userVaultAllocations = [
   },
   {
     value: 641500,
-    name: "Vault B",
+    name: "Protect Fund",
     itemStyle: {
       color: "#818cf8",
     },

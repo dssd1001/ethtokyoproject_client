@@ -3,11 +3,10 @@ import { CircleStackIcon } from "@heroicons/react/24/outline";
 
 export const appVaultNames = [
   {
-    href: "/vault/protect",
-    name: "Protect",
-    description:
-      "Earn by reducing your exposure to volatile market conditions and strong bearish sentiments.",
-    icon: ShieldCheckIcon,
+    href: "/fund/flagship",
+    name: "Flagship",
+    description: "Earn through slow and steady gains by trading tiny, predictable movements in price action.",
+    icon: CircleStackIcon,
     pattern: {
       y: 16,
       squares: [
@@ -17,11 +16,10 @@ export const appVaultNames = [
     },
   },
   {
-    href: "/vault/compound",
-    name: "Compound",
-    description:
-      "Earn through slow and steady gains by trading tiny, predictable movements in price action.",
-    icon: CircleStackIcon,
+    href: "/fund/compound",
+    name: "Protect",
+    description: "Earn by reducing your exposure to volatile market conditions and strong bearish sentiments.",
+    icon: ShieldCheckIcon,
     pattern: {
       y: -6,
       squares: [

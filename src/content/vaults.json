@@ -1,6 +1,6 @@
 [
   {
-    "name": "Protect",
+    "name": "Flagship",
     "attributes": [
       {
         "trait_type": "Risk",
@@ -14,7 +14,7 @@
     "accuracy": 86.7
   },
   {
-    "name": "Compound",
+    "name": "Protect",
     "attributes": [
       {
         "trait_type": "Risk",
